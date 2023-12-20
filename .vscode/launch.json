@@ -1,0 +1,18 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "foss-tools.fsproj",
+            "type": "coreclr",
+            "request": "launch",
+            "program": "/workspaces/foss-tools/bin/Debug/net8.0/foss-tools.dll",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "presentation": {
+                "group": "ionide",
+                "hidden": false
+            }
+        }
+    ]
+}

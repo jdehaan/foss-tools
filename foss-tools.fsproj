@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <RootNamespace>Foss</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="4.3.0" />
+    <PackageReference Include="FSharp.Data" Version="6.3.0" />
+    <PackageReference Include="Thoth.Json.Net" Version="11.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="src/User.fs" />
+    <Compile Include="src/Smtp.fs" />
+    <Compile Include="src/Mail.fs" />
+    <Compile Include="src/Program.fs" />
+  </ItemGroup>
+</Project>
