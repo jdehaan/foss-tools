@@ -1,0 +1,16 @@
+group Main
+    source https://api.nuget.org/v3/index.json
+
+    nuget dotnet-fsharplint
+
+group Analyzers
+    source https://api.nuget.org/v3/index.json
+
+    nuget fsharp-analyzers
+    nuget Ionide.Analyzers
+    nuget G-Research.FSharp.Analyzers
+
+group Documentation
+    source https://api.nuget.org/v3/index.json
+
+    nuget fsdocs-tool

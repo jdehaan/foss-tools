@@ -7,6 +7,18 @@
       "commands": [
         "fantomas"
       ]
+    },
+    "fsharp-analyzers": {
+      "version": "0.22.0",
+      "commands": [
+        "fsharp-analyzers"
+      ]
+    },
+    "dotnet-fsharplint": {
+      "version": "0.21.10",
+      "commands": [
+        "dotnet-fsharplint"
+      ]
     }
   }
 }

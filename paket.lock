@@ -1,0 +1,15 @@
+NUGET
+  remote: https://api.nuget.org/v3/index.json
+    dotnet-fsharplint (0.21.10)
+
+GROUP Analyzers
+NUGET
+  remote: https://api.nuget.org/v3/index.json
+    fsharp-analyzers (0.22)
+    G-Research.FSharp.Analyzers (0.6)
+    Ionide.Analyzers (0.6)
+
+GROUP Documentation
+NUGET
+  remote: https://api.nuget.org/v3/index.json
+    fsdocs-tool (19.1.1)

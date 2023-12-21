@@ -3,11 +3,37 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <RootNamespace>Foss</RootNamespace>
+    <FSharpAnalyzersOtherFlags>--analyzers-path &quot;$(PkgG-Research_FSharp_Analyzers)/analyzers/dotnet/fs&quot;</FSharpAnalyzersOtherFlags>
+    <FSharpAnalyzersOtherFlags>$(FSharpAnalyzersOtherFlags) --analyzers-path &quot;$(PkgIonide_Analyzers)/analyzers/dotnet/fs&quot;</FSharpAnalyzersOtherFlags>
+    <FSharpAnalyzersOtherFlags>$(FSharpAnalyzersOtherFlags) --exclude-analyzer PartialAppAnalyzer</FSharpAnalyzersOtherFlags>
+    <FSharpAnalyzersOtherFlags>$(FSharpAnalyzersOtherFlags) --configuration $(Configuration)</FSharpAnalyzersOtherFlags>
+    <FSharpAnalyzersOtherFlags>$(FSharpAnalyzersOtherFlags) --report &quot;reports/$(MSBuildProjectName)-$(TargetFramework).sarif&quot;</FSharpAnalyzersOtherFlags>
+    <FSharpAnalyzersOtherFlags>$(FSharpAnalyzersOtherFlags) --code-root $(SolutionDir)</FSharpAnalyzersOtherFlags>
+    <FSharpAnalyzersOtherFlags>$(FSharpAnalyzersOtherFlags) --verbosity diag</FSharpAnalyzersOtherFlags>
   </PropertyGroup>
+  <Target Name="FSharpLint" AfterTargets="BeforeBuild">
+  <Exec
+    Command="dotnet fsharplint -f msbuild lint --lint-config $(MSBuildThisFileDirectory)fsharplint.json $(MSBuildProjectFullPath)"
+    ConsoleToMsBuild="true"
+    IgnoreExitCode="false"
+  />
+  </Target>
   <ItemGroup>
     <PackageReference Include="MailKit" Version="4.3.0" />
     <PackageReference Include="FSharp.Data" Version="6.3.0" />
     <PackageReference Include="Thoth.Json.Net" Version="11.0.0" />
+    <PackageReference Include="G-Research.FSharp.Analyzers" Version="0.6.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Ionide.Analyzers" Version="0.6.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>analyzers</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="FSharp.Analyzers.Build" Version="0.2.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>build</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src/User.fs" />

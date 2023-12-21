@@ -1,3 +1,12 @@
 {
-    "editor.inlayHints.enabled": "offUnlessPressed"
+    "editor.inlayHints.enabled": "offUnlessPressed",
+    "FSharp.enableAnalyzers": true,
+    "FSharp.analyzersPath": [
+        "/home/vscode/.nuget/packages/g-research.fsharp.analyzers/0.6.0/analyzers/dotnet/fs",
+        "/home/vscode/.nuget/packages/ionide.analyzers/0.6.0/analyzers/dotnet/fs"
+    ],
+    "FSharp.enableTreeView": true,
+    "FSharp.linter": true,
+    "Paket.autoInstall": true,
+    "sarif-viewer.connectToGithubCodeScanning": "off"
 }

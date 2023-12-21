@@ -2,3 +2,6 @@
 /bin/
 
 .fake
+
+packages/
+reports/*.sarif

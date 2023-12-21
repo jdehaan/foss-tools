@@ -67,7 +67,7 @@ let sendEmail smtpConfig (userAttributes: UserAttributes) template =
     client.Authenticate(smtpConfig.UserName, smtpConfig.Password)
 
     // Send the email
-    client.Send(message)
+    client.Send(message) |> ignore
 
     // Disconnect from the server
     client.Disconnect(true)
