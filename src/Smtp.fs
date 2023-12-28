@@ -21,7 +21,6 @@ let readSmtpConfig filePath =
 
 // Function to send email using MailKit
 let sendEmail smtpConfig (userAttributes: UserAttributes) template =
-
     let message = new MimeMessage()
     message.From.Add(MailboxAddress("FOSS", smtpConfig.UserName))
     message.To.Add(MailboxAddress(userAttributes.UserName, userAttributes.EMail))
@@ -61,13 +60,14 @@ let sendEmail smtpConfig (userAttributes: UserAttributes) template =
     // Set the multipart as the message body
     message.Body <- multipart
 
-    use client = new SmtpClient ()
+    try
+        use client = new SmtpClient ()
 
-    client.Connect(smtpConfig.Host, smtpConfig.Port, SecureSocketOptions.StartTls)
-    client.Authenticate(smtpConfig.UserName, smtpConfig.Password)
+        client.Connect(smtpConfig.Host, smtpConfig.Port, SecureSocketOptions.StartTls)
+        client.Authenticate(smtpConfig.UserName, smtpConfig.Password)
+        client.Send(message) |> ignore
+        client.Disconnect(true)
 
-    // Send the email
-    client.Send(message) |> ignore
-
-    // Disconnect from the server
-    client.Disconnect(true)
+        Ok userAttributes.EMail
+    with ex ->
+        Error <| sprintf "%s (%s)" ex.Message userAttributes.EMail

@@ -3,7 +3,6 @@ module UserFunctions
 open System.IO
 open Thoth.Json.Net
 
-// Define a type for user attributes
 type UserAttributes = {
     UserName: string
     EMail: string

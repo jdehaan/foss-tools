@@ -18,12 +18,10 @@ let logResult result =
 
 // Main function to process each user
 let processUser smtpConfig templatePath (userAttributes: UserAttributes) =
-    try
-        let template = loadTemplate templatePath
-        sendEmail smtpConfig userAttributes template
-        logResult (sprintf "OK %s" userAttributes.EMail)
-    with ex ->
-        logResult (sprintf "Error: %s (%s)" ex.Message userAttributes.EMail)
+    let template = loadTemplate templatePath
+    match sendEmail smtpConfig userAttributes template with
+    | Ok s -> logResult <| sprintf "Ok: %s" s
+    | Error s -> logResult <| sprintf "Error: %s" s
 
 let (>>=) result func = Result.bind func result
 
